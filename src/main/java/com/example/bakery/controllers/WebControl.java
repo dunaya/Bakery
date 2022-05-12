@@ -57,7 +57,7 @@ public class WebControl {
     }
 
     @PostMapping("/registration/client")
-    public String doregistrationClient(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String surname) {
+    public String doRegistrationClient(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String surname) {
         AllRole allRoles=allRoleRepository.findByUserlogin(login);
 
         if(allRoles!=null)
@@ -94,7 +94,7 @@ public class WebControl {
     public String doRegistration_new_baker(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String specialisation, @RequestParam String surname) {
         AllRole allRole=allRoleRepository.findByUserlogin(login);
         if(allRole!=null)
-        {return "registrationForTeacher";}
+        {return "registrationForBaker";}
         else
         {AllRole new_allrole=new AllRole();
             new_allrole.login=login;
@@ -154,7 +154,7 @@ public class WebControl {
         if(allRoleRepository.findByUserlogin(auth1.getName()).type.equals("ROLE_CLIENT"))
         {
             model.addAttribute("type","/client_page");
-            return "clientPage";
+            return "redirect:/client_page";
 
         }
         else if(allRoleRepository.findByUserlogin(auth1.getName()).type.equals("ROLE_BAKER"))
@@ -173,7 +173,7 @@ public class WebControl {
         model.addAttribute("surname",clientRepository.findByClientlogin(auth1.getName()).surname);
         model.addAttribute("login",clientRepository.findByClientlogin(auth1.getName()).login);
         model.addAttribute("email",clientRepository.findByClientlogin(auth1.getName()).email);
-        model.addAttribute("teacher",clientRepository.findByClientlogin(auth1.getName()).yourBaker);
+        model.addAttribute("baker",clientRepository.findByClientlogin(auth1.getName()).yourBaker);
         return "clientPage";
     }
     @GetMapping("/baker_page")

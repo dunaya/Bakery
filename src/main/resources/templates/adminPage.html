@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+        }
+        #text_body{
+            vertical-align: center;
+            width: 400px;
+            background: #ffffff50; /* Цвет фона */
+            color: #000000; /* Цвет текста */
+            padding: 10px; /* Поля вокруг текста */
+            border-radius: 8px; /* Уголки */
+        }
+        div::after {
+            content: "";
+            background: url("https://peko-msk.ru/upload/iblock/c78/IMG_3558_.jpg?162748691236537");
+            opacity: 0.3;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+        #block-body{
+            width: 1920px;
+            margin: auto;
+            height: auto;
+        }
+        header{
+            width: 1920px;
+            height: 100px;
+            background-color: #86a1f8;
+        }
+        .logo{
+            width: 350px;
+            float: left;
+            height: 100px;
+        }
+        .logo a{
+            display: block;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-family: sans-serif;
+            font-size: 40px;
+            color: #DEE7AE;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .use{
+            color: #E78B03;
+        }
+        .web{
+            color: #FBE4C8;
+        }
+        .logo p{
+            margin-left: 20px;
+            margin-top: 2px;
+            margin-bottom: 5px;
+            font-family: sans-serif;
+            font-size: 20px;
+            color: white;
+        }
+        .top-menu{
+            margin-left: 150px;
+            width: 1000px;
+            height: 100px;
+            float: left;
+        }
+        .top-menu ul li{
+            list-style: none;
+            float: left;
+            text-align: center;
+        }
+        .top-menu ul li a {
+            display: block;
+            width: 250px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 25px;
+            color: white;
+            height: 65px;
+            padding-top: 35px;
+            cursor: pointer;
+        }
+        .top-menu ul li a:hover{
+            transition: all 0.5s ease;
+            background-color: #E78B03;
+        }
+        .block-top-auth{
+            width: 250px;
+            float: left;
+            height: 100px;
+            margin-left: 165px;
+        }
+        .block-top-auth p{
+            margin-top: 35px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .block-top-auth a{
+            text-decoration: none;
+            color: white;
+            font-family: sans-serif;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .block-top-auth a:hover{
+            transition: all 0.5s ease;
+            color: #FBE4C8;
+        }
+        table {
+            border: 1px solid grey;
+        }
+        /* границы ячеек первого ряда таблицы */
+        th {
+            border: 1px solid grey;
+        }
+        /* границы ячеек тела таблицы */
+        td {
+            border: 1px solid grey;
+            text-align: center; /* Выравниваем текст по центру ячейки */
+        }
+        table {
+            width: 500px;
+            margin: auto; /* Выравниваем таблицу по центру окна  */
+        }
+    </style>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="block-body">
+    <header>
+        <div class="logo">
+            <a href="/home">
+                <span class="use">Bakery</span>&nbsp<span class="web">HOME</span>
+            </a>
+            <p>Свежая выпечка)))</p>
+        </div>
+        <div class="top-menu">
+            <ul>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Адреса</a></li>
+                <li><a href="#">Основатели</a></li>
+                <li><a href="#">Обратная связь</a></li>
+            </ul>
+        </div>
+        <div class="block-top-auth">
+            <p>
+                <a href="#">Личный кабинет</a></p>
+        </div>
+    </header>
+    <table>
+        <colgroup>
+            <col span="1" style="background:Khaki">
+            <col style="background-color:LightCyan">
+        </colgroup>
+        <tr>
+            <th> Параметры</th>
+            <th>Личный данные</th>
+        </tr>
+        <tr>
+            <td>ИМЯ</td>
+            <td><p th:text="${name}"></p></td>
+        </tr>
+        <tr>
+            <td>ФАМИЛИЯ</td>
+            <td><p th:text="${surname}"></p></td>
+        </tr>
+        <tr>
+            <td>ЛОГИН</td>
+            <td><p th:text="${login}"></p></td>
+        </tr>
+        <tr>
+            <td>ССЫЛКА</td>
+            <td><p th:text="${link}"></p></td>
+        </tr>
+        <tr>
+            <td>ДОЛЖНОСТЬ</td>
+            <td><p th:text="${position}"></p></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <table>
+        <colgroup>
+            <col span="1" style="background:Khaki">
+            <col style="background-color:LightCyan">
+        </colgroup>
+        <tr>
+            <th>Функции</th>
+            <th>Кнопки</th>
+        </tr>
+        <tr>
+            <td>Клиенты без назначенного пекаря</td>
+            <td><a href="/freeClient">ПОСМОТРЕТЬ</a></td>
+        </tr>
+            <tr>
+                <td>Пекари</td>
+                <td><a href="/bakers">ПОСМОТРЕТЬ</a></td>
+            </tr>
+        <tr>
+            <td>Клиент-пекарь</td>
+            <td><a href="/target">НАЗНАЧИТЬ</a></td>
+        </tr>
+        <tr>
+            <td>АДМИН</td>
+            <td><a href="/registration/admin">ЗАРЕГИСТРИРОВАТЬ</a></td>
+        </tr>
+        <tr>
+            <td>ВЫХОД</td>
+            <td><form th:action="@{/logout}" method="post">
+                <p><input type="submit" value="Выход"/></p>
+            </form></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
