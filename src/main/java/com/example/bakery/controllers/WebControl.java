@@ -179,10 +179,10 @@ public class WebControl {
     @GetMapping("/baker_page")
     public String teacherPage(@RequestParam(name = "name",required = false,defaultValue = "300") String name,Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("name",bakerRepository.findByTeacherlogin(auth1.getName()).name);
-        model.addAttribute("surname",bakerRepository.findByTeacherlogin(auth1.getName()).surname);
-        model.addAttribute("login",bakerRepository.findByTeacherlogin(auth1.getName()).login);
-        model.addAttribute("specialisation",bakerRepository.findByTeacherlogin(auth1.getName()).specialisation);
+        model.addAttribute("name",bakerRepository.findByBakerlogin(auth1.getName()).name);
+        model.addAttribute("surname",bakerRepository.findByBakerlogin(auth1.getName()).surname);
+        model.addAttribute("login",bakerRepository.findByBakerlogin(auth1.getName()).login);
+        model.addAttribute("specialisation",bakerRepository.findByBakerlogin(auth1.getName()).specialisation);
         return "bakerPage";
     }
 
@@ -197,10 +197,17 @@ public class WebControl {
         return "adminPage";
     }
 
-    @GetMapping("/my_client")
-    public String getStudent(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
+    @GetMapping("/my_baker")
+    public String getBaker(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("client", clientRepository.findByClientBaker(auth1.getName()));
+        return "myBaker";
+    }
+
+    @GetMapping("/my_client")
+    public String getClient(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
+        Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("baker", bakerRepository.findByBakerClient(auth1.getName()));
         return "myClient";
     }
 
@@ -218,10 +225,12 @@ public class WebControl {
     }
 
     @PostMapping("/target")
-    public String target(@RequestParam String yourBaker,@RequestParam String client) {
+    public String target(@RequestParam String baker,@RequestParam String client) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
-        clientRepository.findByClientlogin(client).yourBaker=yourBaker;
+        clientRepository.findByClientlogin(client).yourBaker=baker;
         clientRepository.save(clientRepository.findByClientlogin(client));
+        bakerRepository.findByBakerlogin(baker).yourClient=client;
+        bakerRepository.save(bakerRepository.findByBakerlogin(baker));
         return "redirect:/home";
     }
 

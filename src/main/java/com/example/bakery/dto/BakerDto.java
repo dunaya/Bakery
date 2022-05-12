@@ -23,18 +23,21 @@ public class BakerDto {
     @NotNull
     private String link;
 
+    @NotNull
+    private String yourClient;
 
     @NotNull
     private String specialisation;
 
-    public BakerDto(Long id, String name, String surname, String login, String password, String link, String specialisation) {
+    public BakerDto(Long id, String name, String surname, String login, String password, String link, String specialisation, String yourClient) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
         this.link = link;
-        this.specialisation = specialisation ;
+        this.specialisation = specialisation;
+        this.yourClient = yourClient;
 
     }
 
@@ -92,6 +95,14 @@ public class BakerDto {
 
     public void setSpecialisation(String specialisation) {
         this.specialisation = specialisation;
+    }
+
+    public String getYourClient(){
+        return yourClient;
+    }
+
+    public void setYourClient(){
+        this.yourClient = yourClient;
     }
 }
 
