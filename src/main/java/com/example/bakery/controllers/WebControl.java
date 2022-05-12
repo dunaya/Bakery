@@ -166,6 +166,7 @@ public class WebControl {
         }
     }
 
+
     @GetMapping("/client_page")
     public String clientPage(@RequestParam(name = "name",required = false,defaultValue = "300") String name,Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
@@ -183,6 +184,7 @@ public class WebControl {
         model.addAttribute("surname",bakerRepository.findByBakerlogin(auth1.getName()).surname);
         model.addAttribute("login",bakerRepository.findByBakerlogin(auth1.getName()).login);
         model.addAttribute("specialisation",bakerRepository.findByBakerlogin(auth1.getName()).specialisation);
+        model.addAttribute("client",bakerRepository.findByBakerlogin(auth1.getName()).yourClient);
         return "bakerPage";
     }
 
@@ -201,6 +203,7 @@ public class WebControl {
     public String getBaker(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("client", clientRepository.findByClientBaker(auth1.getName()));
+        model.addAttribute("baker",clientRepository.findByClientlogin(auth1.getName()).yourBaker);
         return "myBaker";
     }
 
@@ -208,6 +211,7 @@ public class WebControl {
     public String getClient(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("baker", bakerRepository.findByBakerClient(auth1.getName()));
+        model.addAttribute("client",bakerRepository.findByBakerlogin(auth1.getName()).yourClient);
         return "myClient";
     }
 

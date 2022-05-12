@@ -22,7 +22,7 @@ public class BakerController {
 
 
     @GetMapping("/bakers")
-    @ApiOperation("get all teachers")
+    @ApiOperation("get all bakers")
     public ResponseEntity<List<Baker>> getBaker() {
         return ResponseEntity.ok(bakerRepository.findAll());
     }
