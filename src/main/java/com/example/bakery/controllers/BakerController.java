@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@Api("admin controller")
+@Api("baker controller")
 public class BakerController {
     final
     BakerRepository bakerRepository;

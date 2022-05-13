@@ -16,21 +16,18 @@ public class ClientDto {
     @NotNull
     private String password;
     @NotNull
-    private String link;
-    @NotNull
-    private String tariff;
+    private String email;
     @NotNull
     private String yourBaker;
 
 
-    public ClientDto(Long id, String name, String surname, String login, String password, String link, String tariff, String yourBaker) {
+    public ClientDto(Long id, String name, String surname, String login, String password, String email, String yourBaker) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
-        this.link = link;
-        this.tariff = tariff;
+        this.email = email;
         this.yourBaker = yourBaker;
     }
 
@@ -74,27 +71,20 @@ public class ClientDto {
         this.password = password;
     }
 
-    public String getLink() {
-        return this.link;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getTariff() {
-        return this.tariff;
-    }
 
-    public void setTariff(String tariff) {
-        this.tariff = tariff;
-    }
-
-    public String getYourTeacher() {
+    public String getYourBaker() {
         return this.yourBaker;
     }
 
-    public void setYourTeacher(String yourTeacher) {
-        this.yourBaker = this.yourBaker;
+    public void setYourBaker(String yourBaker) {
+        this.yourBaker = yourBaker;
     }
 }

@@ -91,22 +91,26 @@ public class WebControl {
     }
 
     @PostMapping("/registration/baker")
-    public String doRegistration_new_baker(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String specialisation, @RequestParam String surname) {
+    public String doRegistration_new_baker(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String specialisation, @RequestParam String surname, @RequestParam String email) {
         AllRole allRole=allRoleRepository.findByUserlogin(login);
         if(allRole!=null)
         {return "registrationForBaker";}
         else
-        {AllRole new_allrole=new AllRole();
+        {
+            AllRole new_allrole=new AllRole();
             new_allrole.login=login;
             new_allrole.password=password;
             new_allrole.type="ROLE_BAKER";
+
             Baker new_baker = new Baker();
             new_baker.name = name;
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             new_baker.password = passwordEncoder.encode(password);
             new_baker.login = login;
+            new_baker.email = email;
             new_baker.specialisation = specialisation;
             new_baker.surname = surname;
+            new_baker.yourClient = "default";
             new_baker.type="ROLE_BAKER";
 
             ResponseEntity.ok(allRoleRepository.save(new_allrole));
@@ -159,13 +163,17 @@ public class WebControl {
         }
         else if(allRoleRepository.findByUserlogin(auth1.getName()).type.equals("ROLE_BAKER"))
         {model.addAttribute("type","/baker_page");
-        return "bakerPage";}
+        return "redirect:/baker_page";}
         else{
             model.addAttribute("type","/admin_page");
-            return "adminPage";
+            return "redirect:/admin_page";
         }
     }
 
+    @GetMapping("/mainPage")
+    public String mainPage(){
+        return "mainPage";
+    }
 
     @GetMapping("/client_page")
     public String clientPage(@RequestParam(name = "name",required = false,defaultValue = "300") String name,Model model) {
@@ -178,7 +186,7 @@ public class WebControl {
         return "clientPage";
     }
     @GetMapping("/baker_page")
-    public String teacherPage(@RequestParam(name = "name",required = false,defaultValue = "300") String name,Model model) {
+    public String bakerPage(@RequestParam(name = "name",required = false,defaultValue = "300") String name,Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("name",bakerRepository.findByBakerlogin(auth1.getName()).name);
         model.addAttribute("surname",bakerRepository.findByBakerlogin(auth1.getName()).surname);
@@ -229,12 +237,11 @@ public class WebControl {
     }
 
     @PostMapping("/target")
-    public String target(@RequestParam String baker,@RequestParam String client) {
-        Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
-        clientRepository.findByClientlogin(client).yourBaker=baker;
-        clientRepository.save(clientRepository.findByClientlogin(client));
-        bakerRepository.findByBakerlogin(baker).yourClient=client;
-        bakerRepository.save(bakerRepository.findByBakerlogin(baker));
+    public String target(@RequestParam(required = false) String yourBaker, String yourClient) {
+        bakerRepository.findByBakerlogin(yourBaker).yourClient=yourClient;
+        bakerRepository.save(bakerRepository.findByBakerlogin(yourBaker));
+        clientRepository.findByClientlogin(yourClient).yourBaker=yourBaker;
+        clientRepository.save(clientRepository.findByClientlogin(yourClient));
         return "redirect:/home";
     }
 

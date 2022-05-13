@@ -23,7 +23,7 @@ public class SwaggerCinfig {
 
     private ApiInfo apiProfile() {
         return new ApiInfoBuilder()
-                .title("uFitness API")
+                .title("API")
                 .description("Profile Controller data API")
                 .termsOfServiceUrl("http://localhost:8080")
                 .contact(new Contact("Katya", "https://vk.com/prohodymimo", ""))

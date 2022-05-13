@@ -17,7 +17,8 @@ import javax.validation.constraints.NotNull;
                         @ColumnResult(name ="login", type =String.class),
                         @ColumnResult(name ="password", type =String.class),
                         @ColumnResult(name ="specialisation", type =String.class),
-                        @ColumnResult(name="yourClient", type=String.class)
+                        @ColumnResult(name="yourClient", type=String.class),
+                        @ColumnResult(name = "email", type=String.class)
                 }
 
         )
@@ -70,5 +71,10 @@ public class Baker {
     @Column(name = "yourClient", length = 100)
     @ApiModelProperty("yourClient")
     public String yourClient;
+
+    @NotNull
+    @Column(name = "email", length = 100)
+    @ApiModelProperty("email")
+    public String email;
 
 }

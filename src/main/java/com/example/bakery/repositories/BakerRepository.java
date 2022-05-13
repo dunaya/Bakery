@@ -12,5 +12,5 @@ public interface BakerRepository extends JpaRepository<Baker, Long> {
     @Query("SELECT con FROM Baker con  WHERE con.login=(:login)")
     Baker findByBakerlogin(@Param("login") String login);
     @Query("SELECT con FROM Baker con  WHERE con.yourClient=(:yourClient)")
-    List<Client> findByBakerClient(@Param("yourClient") String yourClient);
+    List<Baker> findByBakerClient(@Param("yourClient") String yourClient);
 }
