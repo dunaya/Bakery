@@ -11,7 +11,11 @@
             box-sizing: border-box;
         }
         body{
-            background: url("https://peko-msk.ru/upload/iblock/c78/IMG_3558_.jpg?162748691236537");
+            background: url("https://kartinkin.net/uploads/posts/2021-07/1626403642_31-kartinkin-com-p-kruglii-khleb-yeda-krasivo-foto-39.jpg");
+            -moz-background-size: 100%;
+            -webkit-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
             font-family: "Roboto Light", sans-serif;
         }
         input{
@@ -102,10 +106,8 @@
         }
         .button-google{
             color: black;
-            background: #f2bc74;
+            background: #DEE7AE;
             line-height: 35px;
-            border-radius: 5px;
-            color: black;
         }
         .divider{
             font-weight: 500;
@@ -122,32 +124,18 @@
 <body>
 <main>
     <div class="register-form-container">
-        <div th:if="${param.error}" align="center" style="color: red">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}" align="center" style="color: red">
-            You have been logged out.
-        </div>
         <h1 class="form-title">
-            Авторизация
+            НАЗНАЧИТЬ ПЕКАРЯ
         </h1>
-        <form th:action="@{/login}" method="post">
+        <form th:action="@{/target}" method="post">
             <div class="form-field">
-                <input type="text" name="username" placeholder="Логин">
+                <input type="text" name="yourBaker" placeholder="Логин пекаря">
             </div>
             <div class="form-field">
-                <input type="password" name="password" placeholder="Пароль">
+                <input type="text" name="yourClient" placeholder="Логин клиента">
             </div>
             <div class="form-buttons">
-                <button class="button" type="submit" value="Submit">Войти</button>
-                <div class="divider">или</div>
-                <a href="#" class="button button-google">GOOGLE</a>
-            </div>
-            <div class="divider">Ещё не с нами?</div>
-
-            <div>
-                <button class = "button-google"></button>
-                <a href="/registration" class="button button-google">Зарегистрироваться</a>
+                <button class="button" type="submit" value="Submit">НАЗНАЧИТЬ</button>
             </div>
         </form>
     </div>

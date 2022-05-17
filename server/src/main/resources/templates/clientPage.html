@@ -20,24 +20,28 @@
     }
     div::after {
       content: "";
-      background: url("https://peko-msk.ru/upload/iblock/c78/IMG_3558_.jpg?162748691236537");
+      background: url("https://i.pinimg.com/originals/d4/c9/16/d4c9160fb5c334821df1645052e103ff.jpg");
+      position: fixed;
+      -moz-background-size: 100%;
+      -webkit-background-size: 100%;
+      -o-background-size: 100%;
+      background-size: 100%;
       opacity: 0.3;
       top: 0;
       left: 0;
       bottom: 0;
       right: 0;
-      position: absolute;
       z-index: -1;
     }
     #block-body{
-      width: 1920px;
+      background-size: 100%;
       margin: auto;
       height: auto;
     }
     header{
-      width: 1920px;
+      width: 100%;
       height: 100px;
-      background-color: #86a1f8;
+      background-color: #7B68EE;
     }
     .logo{
       width: 350px;
@@ -55,7 +59,7 @@
       cursor: pointer;
     }
     .use{
-      color: #E78B03;
+      color: #FA8072;
     }
     .web{
       color: #FBE4C8;
@@ -92,7 +96,7 @@
     }
     .top-menu ul li a:hover{
       transition: all 0.5s ease;
-      background-color: #E78B03;
+      background-color: #FA8072;
     }
     .block-top-auth{
       width: 250px;
@@ -132,6 +136,31 @@
       width: 500px;
       margin: auto; /* Выравниваем таблицу по центру окна  */
     }
+    .button{
+      font-weight: bold;
+      font-size: 14px;
+      display:block;
+      height: 35px;
+      width: 100%;
+      background: #f2bc74;
+      border-radius: 5px;
+      color: black;
+      text-transform: uppercase;
+      text-align: center;
+      cursor: pointer;
+    }
+    .button:hover{
+      background: #FBE4C8;
+    }
+    a.button{
+      text-decoration: none;
+    }
+    .button-google{
+      color: black;
+      background: #FA8072;
+      line-height: 35px;
+      width: 200px;
+    }
   </style>
   <link rel="stylesheet" href="main.css">
 </head>
@@ -142,56 +171,55 @@
       <a href="/home">
         <span class="use">Пекарня</span>
       </a>
-      <p>Торт вашей мечты!</p>
     </div>
     <div class="buttons">
+      <div i="header" class="container">
+        <div style="position:absolute; right: 20px; top: 30px">
       <a href="/mainPage" class="button button-google">Хочу найти пекаря</a>
+        </div>
+      </div>
     </div>
-    <div class="top-menu">
+        <div class="top-menu">
       <ul>
         <li><a href="#">Новости</a></li>
         <li><a href="#">Адреса</a></li>
         <li><a href="#">Основатели</a></li>
         <li><a href="#">Обратная связь</a></li>
       </ul>
-    </div>
-    <div class="block-top-auth">
-      <p>
-        <a href="#">Личный кабинет</a></p>
-    </div>
+        </div>
   </header>
   <table>
     <colgroup>
-      <col span="1" style="background:Khaki">
-      <col style="background-color:LightCyan">
+      <col span="1" style="background:#E6E6FA">
+      <col style="background-color:#E6E6FA">
     </colgroup>
     <tr>
       <th> Параметры</th>
       <th>Личные данные</th>
     </tr>
     <tr>
-      <td>ИМЯ</td>
+      <td>Имя</td>
       <td><p th:text="${name}"></p></td>
     </tr>
     <tr>
-      <td>ФАМИЛИЯ</td>
+      <td>Фамилия</td>
       <td><p th:text="${surname}"></p></td>
     </tr>
     <tr>
-      <td>ЛОГИН</td>
+      <td>Логин</td>
       <td><p th:text="${login}"></p></td>
     </tr>
     <tr>
-      <td>ПОЧТА</td>
+      <td>Почта</td>
       <td><p th:text="${email}"></p></td>
     </tr>
     <tr>
     <tr>
-      <td>ПЕКАРЬ</td>
+      <td>Пекарь</td>
       <td><p th:text="${baker}"></p></td>
     </tr>
     <tr>
-      <td>ВЫХОД</td>
+      <td>Выход</td>
       <td><form th:action="@{/logout}" method="post">
         <p><input type="submit" value="Выход"/></p>
       </form></td>

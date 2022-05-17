@@ -11,7 +11,11 @@
             box-sizing: border-box;
         }
         body{
-            background: url("https://static.tildacdn.com/tild6263-6533-4862-b965-656262646537/20180208_1424010.jpg");
+            background: url("http://ibreak2travel.com/wp-content/uploads/2018/06/25610415-18-09-25-KNP_4718.jpg");
+            -moz-background-size: 100%;
+            -webkit-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
             font-family: "Roboto Light", sans-serif;
         }
         input{
@@ -87,7 +91,7 @@
             display:block;
             height: 35px;
             width: 100%;
-            background: #DEE7AE;
+            background: #f2bc74;
             border-radius: 5px;
             color: black;
             text-transform: uppercase;
@@ -102,8 +106,10 @@
         }
         .button-google{
             color: black;
-            background: #DEE7AE;
+            background: #f2bc74;
             line-height: 35px;
+            border-radius: 5px;
+            color: black;
         }
         .divider{
             font-weight: 500;
@@ -120,18 +126,32 @@
 <body>
 <main>
     <div class="register-form-container">
+        <div th:if="${param.error}" align="center" style="color: red">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" align="center" style="color: red">
+            You have been logged out.
+        </div>
         <h1 class="form-title">
-            НАЗНАЧИТЬ ПЕКАРЯ
+            Авторизация
         </h1>
-        <form th:action="@{/target}" method="post">
+        <form th:action="@{/login}" method="post">
             <div class="form-field">
-                <input type="text" name="yourBaker" placeholder="Логин пекаря">
+                <input type="text" name="username" placeholder="Логин">
             </div>
             <div class="form-field">
-                <input type="text" name="yourClient" placeholder="Логин клиента">
+                <input type="password" name="password" placeholder="Пароль">
             </div>
             <div class="form-buttons">
-                <button class="button" type="submit" value="Submit">НАЗНАЧИТЬ</button>
+                <button class="button" type="submit" value="Submit">Войти</button>
+                <div class="divider">или</div>
+                <a href="#" class="button button-google">GOOGLE</a>
+            </div>
+            <div class="divider">Ещё не с нами?</div>
+
+            <div>
+                <button class = "button-google"></button>
+                <a href="/registration" class="button button-google">Зарегистрироваться</a>
             </div>
         </form>
     </div>
