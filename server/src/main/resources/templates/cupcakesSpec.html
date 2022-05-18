@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .button{
+        font-weight: bold;
+        font-size: 14px;
+        display:block;
+        height: 35px;
+        width: 100%;
+        background: #f2bc74;
+        border-radius: 5px;
+        color: black;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+    }
+    .button:hover{
+        background: #FBE4C8;
+    }
+    a.button{
+        text-decoration: none;
+    }
+    .button-google{
+        color: black;
+        background: #FA8072;
+        line-height: 35px;
+        width: 200px;
+    }
+</style>
+
+<script th:inline = "javascript">
+    let msg = [[${baker_cupcake}]];
+    console.log(msg);
+
+    var new_elem = document.createElement("P");
+    document.body.appendChild(new_elem);
+
+    for(var i = 0; i < msg.length; ++i){
+
+        var current_baker = msg[i];
+        var curr_row = document.createElement("TR");
+
+        var id_cell = document.createElement("TD");
+        var name_cell = document.createElement("TD");
+        var surname_cell = document.createElement("TD");
+        var spec_cell = document.createElement("TD");
+
+        curr_row.appendChild(id_cell);
+        curr_row.appendChild(name_cell);
+        curr_row.appendChild(surname_cell);
+        curr_row.appendChild(spec_cell);
+
+        var id = document.createTextNode("Baker"+i+"|    Id: "+ current_baker[0]+"|   ")
+        var name_baker = document.createTextNode("Name: "+current_baker[1]+"|   ")
+        var sur = document.createTextNode("Surname: "+current_baker[2]+"|   ")
+        var spec = document.createTextNode("Specialization: "+current_baker[3])
+
+        id_cell.appendChild(id);
+        name_cell.appendChild(name_baker);
+        surname_cell.appendChild(sur);
+        spec_cell.appendChild(spec);
+
+        new_elem.appendChild(curr_row);
+        document.body.appendChild(document.createElement('hr'));
+
+    }
+
+</script>
+</div>
+<div class="buttons">
+    <div i="header" class="container">
+        <div style="position:absolute; right: 20px; bottom: 30px">
+            <a href="/target" class="button button-google">Выбрать пекаря</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

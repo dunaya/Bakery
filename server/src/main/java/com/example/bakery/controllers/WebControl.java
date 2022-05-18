@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.Null;
+import java.util.Arrays;
+
 @Controller
 public class WebControl {
     @Autowired
@@ -57,7 +60,7 @@ public class WebControl {
     }
 
     @PostMapping("/registration/client")
-    public String doRegistrationClient(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String surname) {
+    public String doRegistrationClient(@RequestParam String name, @RequestParam String password, @RequestParam String login, @RequestParam String surname, @RequestParam String email) {
         AllRole allRoles=allRoleRepository.findByUserlogin(login);
 
         if(allRoles!=null)
@@ -79,6 +82,7 @@ public class WebControl {
             new_client.surname = surname;
             new_client.yourBaker = "default";
             new_client.type="ROLE_CLIENT";
+            new_client.email = email;
 
             ResponseEntity.ok(allRoleRepository.save(new_allRole));
             ResponseEntity.ok(clientRepository.save(new_client));
@@ -224,12 +228,41 @@ public class WebControl {
     }
 
     @GetMapping("/free_client")
-    public String freeStudent(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
+    public String freeClient(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
         Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("client", clientRepository.findFreeClient());
         return "freeClient";
     }
 
+    @GetMapping("/spec_cakes")
+    public String cakesSpec(@RequestParam(name = "specialisation",required = false,defaultValue = "300") String specialisation, Model model) {
+        model.addAttribute("baker_cake", bakerRepository.findSpecCakes());
+        return "cakeSpec";
+    }
+
+    @GetMapping("/spec_cookies")
+    public String cookiesSpec(@RequestParam(name = "specialisation",required = false,defaultValue = "300") String specialisation, Model model) {
+        model.addAttribute("baker_cookie", bakerRepository.findSpecBiscuits());
+        return "cookiesSpec";
+    }
+
+    @GetMapping("/spec_cupcakes")
+    public String cupcakesSpec(@RequestParam(name = "specialisation",required = false,defaultValue = "300") String specialisation, Model model) {
+        model.addAttribute("baker_cupcake", bakerRepository.findSpecCupcakes());
+        return "cupcakesSpec";
+    }
+
+    @GetMapping("/spec_pies")
+    public String piesSpec(@RequestParam(name = "specialisation",required = false,defaultValue = "300") String specialisation, Model model) {
+        model.addAttribute("baker_pie", bakerRepository.findSpecPies());
+        return "pieSpec";
+    }
+
+    @GetMapping("/spec_other")
+    public String otherSpec(@RequestParam(name = "specialisation",required = false,defaultValue = "300") String specialisation, Model model) {
+        model.addAttribute("baker_other", bakerRepository.findSpecOther());
+        return "otherSpec";
+    }
 
     @GetMapping("/target")
     public String target() {
@@ -237,11 +270,29 @@ public class WebControl {
     }
 
     @PostMapping("/target")
-    public String target(@RequestParam(required = false) String yourBaker, String yourClient) {
-        bakerRepository.findByBakerlogin(yourBaker).yourClient=yourClient;
-        bakerRepository.save(bakerRepository.findByBakerlogin(yourBaker));
-        clientRepository.findByClientlogin(yourClient).yourBaker=yourBaker;
-        clientRepository.save(clientRepository.findByClientlogin(yourClient));
+    public String target(@RequestParam(required = false) String yourBaker) {
+        Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
+        String yourClient = clientRepository.findByClientlogin(auth1.getName()).login;
+        String oldBakerLog = clientRepository.findByClientlogin(yourClient).yourBaker;
+        String oldClientLog = bakerRepository.findByBakerlogin(yourBaker).yourClient;
+        if (oldBakerLog == "default" && oldClientLog == "default") {
+            bakerRepository.findByBakerlogin(yourBaker).yourClient = yourClient;
+            bakerRepository.save(bakerRepository.findByBakerlogin(yourBaker));
+            clientRepository.findByClientlogin(yourClient).yourBaker = yourBaker;
+            clientRepository.save(clientRepository.findByClientlogin(yourClient));
+        }
+        else if (oldClientLog != "default"){
+            return "errorBaker";
+        }
+        else{
+            Baker oldBaker = bakerRepository.findByBakerlogin(oldBakerLog);
+            oldBaker.yourClient = "default";
+            bakerRepository.findByBakerlogin(yourBaker).yourClient = yourClient;
+            bakerRepository.save(bakerRepository.findByBakerlogin(yourBaker));
+            clientRepository.findByClientlogin(yourClient).yourBaker = yourBaker;
+            clientRepository.save(clientRepository.findByClientlogin(yourClient));
+
+        }
         return "redirect:/home";
     }
 

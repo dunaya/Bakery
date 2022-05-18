@@ -3,7 +3,6 @@ package com.example.bakery.dto;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
-@SuppressWarnings("unused")
 public class BakerDto {
     @Null
     private Long id;
@@ -81,11 +80,11 @@ public class BakerDto {
         this.password = password;
     }
 
-    public String getLink() {
+    public String getEmail() {
         return email;
     }
 
-    public void setLink(String link) {
+    public void setEmail(String link) {
         this.email = email;
     }
 

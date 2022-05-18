@@ -11,7 +11,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query("SELECT con FROM Client con  WHERE con.login=(:login)")
     Client findByClientlogin(@Param("login") String login);
     @Query("SELECT con FROM Client con  WHERE con.yourBaker=(:yourBaker)")
-    List<Client> findByClientBaker(@Param("yourBaker") String yourBaker);
+    String findByClientBaker(@Param("yourBaker") String yourBaker);
     @Query("SELECT con FROM Client con  WHERE con.yourBaker='default'")
     List<Client> findFreeClient();
 
