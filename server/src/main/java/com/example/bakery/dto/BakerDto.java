@@ -28,7 +28,13 @@ public class BakerDto {
     @NotNull
     private String specialisation;
 
-    public BakerDto(Long id, String name, String surname, String login, String password, String email, String specialisation, String yourClient) {
+    @NotNull
+    private Integer ordersCount;
+
+    @NotNull
+    private Integer finishedOrdersCount;
+
+    public BakerDto(Long id, String name, String surname, String login, String password, String email, String specialisation, String yourClient, Integer ordersCount, Integer finishedOrdersCount) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -37,6 +43,8 @@ public class BakerDto {
         this.email = email;
         this.specialisation = specialisation;
         this.yourClient = yourClient;
+        this.ordersCount = ordersCount;
+        this.finishedOrdersCount = finishedOrdersCount;
 
     }
 

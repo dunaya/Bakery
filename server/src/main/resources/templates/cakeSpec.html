@@ -47,12 +47,7 @@
             curr_row.setAttribute('style', 'background-color: white; color: black; width: 12%; height: 10px')
 
             var text = document.createTextNode("baker"+i+"   ");
-            var id_cell = document.createElement("TD");
-            id_cell.setAttribute('style',
-                'background-color: salmon; color: black; width: 30%; height: 10px;',)
-            id_cell.style.borderColor = "#000000"
-            id_cell.style.borderWidth = "2px"
-            id_cell.style.borderStyle = "solid"
+
             var name_cell = document.createElement("TD");
             name_cell.setAttribute('style',
                 'background-color: #75e6da; color: black; width: 30%; height: 10px;',)
@@ -71,24 +66,32 @@
             spec_cell.style.borderColor = "#000000"
             spec_cell.style.borderWidth = "2px"
             spec_cell.style.borderStyle = "solid"
-
+            var orders_cell = document.createElement("TD");
+            orders_cell.setAttribute('style',
+                'background-color: #75e6da; color: black; width: 10%; height: 10px;',)
+            orders_cell.style.borderColor = "#000000"
+            orders_cell.style.borderWidth = "2px"
+            orders_cell.style.borderStyle = "solid"
 
             curr_row.appendChild(text);
-            curr_row.appendChild(id_cell);
+
             curr_row.appendChild(name_cell);
             curr_row.appendChild(surname_cell);
             curr_row.appendChild(spec_cell);
+            curr_row.appendChild(orders_cell);
 
 
-            var id = document.createTextNode("Id: "+ current_baker[0])
+
             var name_baker = document.createTextNode("Name: "+current_baker[1])
             var sur = document.createTextNode("Surname: "+current_baker[2])
             var spec = document.createTextNode("Login: "+current_baker[3])
+            var orders = document.createTextNode("Orders finished:"+current_baker[0])
 
-            id_cell.appendChild(id);
+
             name_cell.appendChild(name_baker);
             surname_cell.appendChild(sur);
             spec_cell.appendChild(spec);
+            orders_cell.appendChild(orders);
 
 
             new_elem.appendChild(curr_row);

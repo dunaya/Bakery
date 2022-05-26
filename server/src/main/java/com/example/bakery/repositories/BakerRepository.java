@@ -14,18 +14,18 @@ public interface BakerRepository extends JpaRepository<Baker, Long> {
     @Query("SELECT con FROM Baker con  WHERE con.yourClient=(:yourClient)")
     String findByBakerClient(@Param("yourClient") String yourClient);
 
-    @Query("SELECT con.id, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='cakes' ")
+    @Query("SELECT con.finishedOrdersCount, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='cakes' ")
     List<List<String>> findSpecCakes();
 
-    @Query("SELECT con.id, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='cookies' ")
+    @Query("SELECT con.finishedOrdersCount, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='cookies' ")
     List<List<String>> findSpecBiscuits();
 
-    @Query("SELECT con.id, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='cupcakes' ")
+    @Query("SELECT con.finishedOrdersCount, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='cupcakes' ")
     List<List<String>> findSpecCupcakes();
 
-    @Query("SELECT con.id, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='pies' ")
+    @Query("SELECT con.finishedOrdersCount, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='pies' ")
     List<List<String>> findSpecPies();
 
-    @Query("SELECT con.id, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='other' ")
+    @Query("SELECT con.finishedOrdersCount, con.name, con.surname, con.login FROM Baker con  WHERE con.specialisation='other' ")
     List<List<String>> findSpecOther();
 }
