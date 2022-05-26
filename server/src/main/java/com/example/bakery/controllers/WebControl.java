@@ -116,6 +116,8 @@ public class WebControl {
             new_baker.surname = surname;
             new_baker.yourClient = "default";
             new_baker.type="ROLE_BAKER";
+            new_baker.ordersCount = 0;
+            new_baker.finishedOrdersCount = 0;
 
             ResponseEntity.ok(allRoleRepository.save(new_allrole));
             ResponseEntity.ok(bakerRepository.save(new_baker));
@@ -265,8 +267,15 @@ public class WebControl {
     }
 
     @GetMapping("/target")
-    public String target() {
-        return "target";
+    public String target(Model model) {
+        Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
+        if (clientRepository.findByClientlogin(auth1.getName()).yourBaker.equals("default")){
+            return "target";
+        }
+        else {
+            model.addAttribute("baker", clientRepository.findByClientlogin(auth1.getName()).yourBaker);
+            return "changeBaker";
+        }
     }
 
     @PostMapping("/target")
@@ -275,13 +284,15 @@ public class WebControl {
         String yourClient = clientRepository.findByClientlogin(auth1.getName()).login;
         String oldBakerLog = clientRepository.findByClientlogin(yourClient).yourBaker;
         String oldClientLog = bakerRepository.findByBakerlogin(yourBaker).yourClient;
-        if (oldBakerLog == "default" && oldClientLog == "default") {
+        System.out.println(oldClientLog);
+        if (oldBakerLog.equals("default") && oldClientLog.equals("default")) {
             bakerRepository.findByBakerlogin(yourBaker).yourClient = yourClient;
             bakerRepository.save(bakerRepository.findByBakerlogin(yourBaker));
             clientRepository.findByClientlogin(yourClient).yourBaker = yourBaker;
             clientRepository.save(clientRepository.findByClientlogin(yourClient));
+            bakerRepository.findByBakerlogin(yourBaker).ordersCount += 1;
         }
-        else if (oldClientLog != "default"){
+        else if (oldClientLog.equals("default") == false){
             return "errorBaker";
         }
         else{
@@ -291,12 +302,35 @@ public class WebControl {
             bakerRepository.save(bakerRepository.findByBakerlogin(yourBaker));
             clientRepository.findByClientlogin(yourClient).yourBaker = yourBaker;
             clientRepository.save(clientRepository.findByClientlogin(yourClient));
+            bakerRepository.findByBakerlogin(yourBaker).ordersCount += 1;
 
         }
         return "redirect:/home";
     }
 
+    @GetMapping("/finish_order")
+    public String finishOrder(){
+        return "finishOrder";
+    }
 
-
+    @PostMapping("/finish_order")
+    public String doFinishOrder(){
+        Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
+        Client client = clientRepository.findByClientlogin(auth1.getName());
+        String oldBakerLog = client.yourBaker;
+        if (oldBakerLog.equals("default")){
+            return "errorBaker";
+        }
+        else {
+            Baker oldBaker = bakerRepository.findByBakerlogin(oldBakerLog);
+            System.out.println(oldBakerLog);
+            oldBaker.yourClient = "default";
+            oldBaker.finishedOrdersCount += 1;
+            clientRepository.findByClientlogin(auth1.getName()).yourBaker = "default";
+            bakerRepository.save(oldBaker);
+            clientRepository.save(client);
+            return "mainPage";
+        }
+    }
 
 }
