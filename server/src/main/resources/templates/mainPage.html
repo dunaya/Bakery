@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+        }
+        #text_body{
+            vertical-align: center;
+            width: 400px;
+            background: #ffffff50; /* Цвет фона */
+            color: #000000; /* Цвет текста */
+            padding: 10px; /* Поля вокруг текста */
+            border-radius: 8px; /* Уголки */
+        }
+        div::after {
+            content: "";
+            background: url("https://i.pinimg.com/originals/c0/5c/e0/c05ce003b3cf1aeb306cdee75b5afdbb.jpg");
+            -moz-background-size: 100%;
+            -webkit-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
+            opacity: 0.3;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+        #block-body{
+            background-size: 100%;
+            margin: auto;
+            height: auto;
+        }
+        header{
+            background-size: 100%;
+            height: 100px;
+            background-color: #7B68EE;
+        }
+        .logo{
+            width: 350px;
+            float: left;
+            height: 100px;
+        }
+        .logo a{
+            display: block;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-family: sans-serif;
+            font-size: 40px;
+            color: #DEE7AE;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .use{
+            color: #FA8072;
+        }
+        .web{
+            color: #FBE4C8;
+        }
+        .logo p{
+            margin-left: 20px;
+            margin-top: 3px;
+            margin-bottom: 5px;
+            font-family: sans-serif;
+            font-size: 17.5px;
+            color: white;
+        }
+        .top-menu{
+            margin-left: 150px;
+            width: 1000px;
+            height: 100px;
+            float: left;
+        }
+        .top-menu ul li{
+            list-style: none;
+            float: left;
+            text-align: center;
+        }
+        .top-menu ul li a {
+            display: block;
+            width: 250px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 25px;
+            color: white;
+            height: 65px;
+            padding-top: 35px;
+            cursor: pointer;
+        }
+        .top-menu ul li a:hover{
+            transition: all 0.5s ease;
+            background-color: #FA8072;
+        }
+        .block-top-auth{
+            width: 250px;
+            float: left;
+            height: 100px;
+            margin-left: 165px;
+        }
+        .block-top-auth p{
+            margin-top: 35px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .block-top-auth a{
+            text-decoration: none;
+            color: white;
+            font-family: sans-serif;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .block-top-auth a:hover{
+            transition: all 0.5s ease;
+            color: white;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        @media (max-width: 892px) {
+            .container {
+                max-width: 750px;
+            }
+        }
+        @media (max-width: 767.98px) {
+            .container {
+                max-width: none;
+                padding: 0 10px;
+            }
+        }
+        .products {
+            margin: 0px 0px 40px 0px;
+        }
+        @media (max-width: 767.98px) {
+            .products {
+                margin: 0;
+            }
+        }
+
+        .products-body {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            font-size: 0;
+        }
+        @media (max-width: 767.98px) {
+            .products-body {
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+        }
+
+        .products__column {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            margin-left: 0px;
+        }
+        @media (max-width: 767.98px) {
+            .products__column {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+            }
+        }
+        @media (max-width: 380px) {
+            .products__column {
+                -webkit-box-flex: 1;
+                -ms-flex: 1 1 100%;
+                flex: 1 1 100%;
+            }
+        }
+
+        .products-item {
+            background-color: #E9F2FF;
+            height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            font-size: 0;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+
+        .products-item__image {
+            display: block;
+            margin: 0px 0px 25px 0px;
+        }
+        @media (max-width: 380px) {
+            .products-item__image {
+                margin: 0px 0px 15px 0px;
+            }
+        }
+
+        .products-item__title {
+            padding: 0px 10px 0px 0px;
+            max-width: 185px;
+            display: block;
+            font-family: "AkzidenzGroteskBQCondensedBold";
+            font-size: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #000000;
+            margin: 0px 0px 30px 0px;
+        }
+        @media (max-width: 380px) {
+            .products-item__title {
+                max-width: none;
+                height: auto;
+                overflow: visible;
+                margin: 0px 0px 20px 0px;
+            }
+        }
+
+        .products-item__text {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 0px 10px 0px 0px;
+            max-width: 195px;
+            font-size: 15px;
+            line-height: 25px;
+            margin: 0px 0px 25px 0px;
+        }
+        @media (max-width: 380px) {
+            .products-item__text {
+                max-width: none;
+                margin: 0px 0px 15px 0px;
+            }
+        }
+
+
+        .products-item__link {
+            font-family: Bebas,serif;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: underline;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+        }
+    </style>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="block-body">
+    <header>
+        <div class="logo">
+            <a href="/home">
+                <span class="use">Пекарня</span>&nbsp<span class="web">Главная</span>
+            </a>
+            <p>Найти клиента или пекаря? Легко!</p>
+        </div>
+        <div class="top-menu">
+            <ul>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Адреса</a></li>
+                <li><a href="#">Основатели</a></li>
+                <li><a href="#">Обратная связь</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="products">
+        <div class="container">
+            <div class="products-body">
+                <div class="products__column">
+                    <div class="products-item">
+                        <a href="" class="products-item__image ibg ibg--w"><img src="https://peko-msk.ru/upload/iblock/c78/IMG_3558_.jpg?162748691236537" width = "300" height = "200" alt=""></a>
+                        <a href="" class="products-item__title">Торты</a>
+                        <div class="products-item__text">Торт на ваш вкус по договоренности с пекарем.<br> Стоимость:<br> от 500руб/кг.</div>
+                        <p><a href="/spec_cakes" class="products-item__link">ВЫБРАТЬ ПЕКАРЯ</a></p>
+                    </div>
+                </div>
+                <div class="products__column">
+                    <div class="products-item">
+                        <a href="" class="products-item__image ibg ibg--w"><img src="https://avatars.mds.yandex.net/i?id=011b81b96f540cfa904175240039ce6e-4772764-images-thumbs&n=13" width = "300" height = "200" alt=""></a>
+                        <a href="" class="products-item__title">Печенье и макаруны</a>
+                        <div class="products-item__text">Печенье или макаруны на любой вкус и цвет!<br> Стоимость:<br> 40руб/шт.</div>
+                        <p><a href="/spec_cookies" class="products-item__link">ВЫБРАТЬ ПЕКАРЯ</a></p>
+                    </div>
+                </div>
+                <div class="products__column">
+                    <div class="products-item">
+                        <a href="" class="products-item__image ibg"><img src="https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkUV2UvQRpRPyK-I4_aGI9FqaKTM5SRkZCeTgDn6uOyic" width = "300" height = "200" alt=""></a>
+                        <a href="" class="products-item__title">Кексы и маффины</a>
+                        <div class="products-item__text">Кексы, капкейки, маффины с начинкой и без<br> Стоимость:<br> 60руб/шт.</div>
+                        <p><a href="/spec_cupcakes" class="products-item__link">ВЫБРАТЬ ПЕКАРЯ</a></p>
+                    </div>
+                </div>
+                <div class="products__column">
+                    <div class="products-item">
+                        <a href="" class="products-item__image ibg"><img src="https://www.matrony.ru/wp-content/uploads/2016/04/rsz_carousel.jpg" width = "300" height = "200" alt=""></a>
+                        <a href="" class="products-item__title">Пироги</a>
+                        <div class="products-item__text">Сытные, сладкие, закрытые и открытые - всё зависит лишь от ваших предпочтений<br> Стоимость:<br> от 300руб/кг.</div>
+                        <p><a href="/spec_pies" class="products-item__link">ВЫБРАТЬ ПЕКАРЯ</a></p>
+                    </div>
+                </div>
+                <div class="products__column">
+                    <div class="products-item">
+                        <a href="" class="products-item__image ibg ibg--w"><img src="https://megapolistime.com/wp-content/uploads/%D1%88%D0%BE%D0%BA%D0%BE%D0%BB%D0%B0%D0%B4%D0%BD%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD%D0%B4%D0%B0%D0%BD.jpg" width = "300" height = "200" alt=""></a>
+                        <a href="" class="products-item__title">Другое</a>
+                        <div class="products-item__text">Хотите что-то необычное? Выберите пекаря и договоритесь о любой вашей задумке!<br> Стоимость:<br> договорная.</div>
+                        <p><a href="/spec_other" class="products-item__link">ВЫБРАТЬ ПЕКАРЯ</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

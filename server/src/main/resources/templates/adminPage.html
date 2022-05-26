@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+        }
+        #text_body{
+            vertical-align: center;
+            width: 400px;
+            background: #ffffff50; /* Цвет фона */
+            color: #000000; /* Цвет текста */
+            padding: 10px; /* Поля вокруг текста */
+            border-radius: 8px; /* Уголки */
+        }
+
+        div::after {
+            content: "";
+            position: fixed;
+            background: url("http://ibreak2travel.com/wp-content/uploads/2018/06/25610415-18-09-25-KNP_4718.jpg");
+            -moz-background-size: 100%;
+            -webkit-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
+            opacity: 0.3;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+        }
+        #block-body{
+            background-size: 100%;
+            margin: auto;
+            height: auto;
+        }
+        header{
+            background-size: 100%;
+            height: 100px;
+            background-color: #7B68EE;
+        }
+        .logo{
+            width: 300px;
+            float: left;
+            height: 100px;
+        }
+        .logo a{
+            display: block;
+            margin-left: 15px;
+            margin-top: 10px;
+            font-family: sans-serif;
+            font-size: 40px;
+            color: #FFE4E1;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .use{
+            color: #FA8072;
+        }
+        .web{
+            color: white; //home
+        }
+        .logo p{
+            margin-left: 20px;
+            margin-top: 2px;
+            margin-bottom: 5px;
+            font-family: sans-serif;
+            font-size: 20px;
+            color: white;
+        }
+        .top-menu{
+            margin-left: 150px;
+            width: 1000px;
+            height: 100px;
+            float: left;
+        }
+        .top-menu ul li{
+            list-style: none;
+            float: left;
+            text-align: center;
+        }
+        .top-menu ul li a {
+            display: block;
+            width: 250px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 25px;
+            color: white;
+            height: 65px;
+            padding-top: 35px;
+            cursor: pointer;
+        }
+        .top-menu ul li a:hover{
+            transition: all 0.5s ease;
+            background-color: #FA8072;
+        }
+        .block-top-auth{
+            width: 250px;
+            float: left;
+            height: 100px;
+            margin-left: 165px;
+        }
+        .block-top-auth p{
+            margin-top: 35px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .block-top-auth a{
+            text-decoration: none;
+            color: white;
+            font-family: sans-serif;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .block-top-auth a:hover{
+            transition: all 0.5s ease;
+            color: #FFE4E1;
+        }
+        table {
+            border: 1px solid grey;
+        }
+        /* границы ячеек первого ряда таблицы */
+        th {
+            border: 1px solid grey;
+        }
+        /* границы ячеек тела таблицы */
+        td {
+            border: 1px solid grey;
+            text-align: center; /* Выравниваем текст по центру ячейки */
+        }
+        table {
+            width: 500px;
+            margin: auto; /* Выравниваем таблицу по центру окна  */
+        }
+    </style>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="block-body">
+    <header>
+        <div class="logo">
+            <a href="/home">
+                <span class="use">Пекарня</span>&nbsp<span class="web">Главная</span>
+            </a>
+            <p>Добрый день!</p>
+        </div>
+        <div class="top-menu">
+            <ul>
+                <li><a href="#">Новости</a></li>
+                <li><a href="#">Адреса</a></li>
+                <li><a href="#">Основатели</a></li>
+                <li><a href="#">Обратная связь</a></li>
+            </ul>
+        </div>
+    </header>
+    <table>
+        <colgroup>
+            <col span="1" style="background:#E6E6FA">
+            <col style="background-color:#E6E6FA">
+        </colgroup>
+        <tr>
+            <th> Параметры</th>
+            <th>Личный данные</th>
+        </tr>
+        <tr>
+            <td>Имя</td>
+            <td><p th:text="${name}"></p></td>
+        </tr>
+        <tr>
+            <td>Фамилия</td>
+            <td><p th:text="${surname}"></p></td>
+        </tr>
+        <tr>
+            <td>Логин</td>
+            <td><p th:text="${login}"></p></td>
+        </tr>
+        <tr>
+            <td>Ссылка</td>
+            <td><p th:text="${link}"></p></td>
+        </tr>
+        <tr>
+            <td>Должность</td>
+            <td><p th:text="${position}"></p></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <table>
+        <colgroup>
+            <col span="1" style="background:#E6E6FA">
+            <col style="background-color:#E6E6FA">
+        </colgroup>
+        <tr>
+            <th>Функции</th>
+            <th>Кнопки</th>
+        </tr>
+        <tr>
+            <td>Клиенты без назначенного пекаря</td>
+            <td><a href="/free_client">Посмотреть</a></td>
+        </tr>
+            <tr>
+                <td>Пекари</td>
+                <td><a href="/bakers">Посмотреть</a></td>
+            </tr>
+        <tr>
+            <td>Клиенты</td>
+            <td><a href="/clients">Посмотреть</a></td>
+        </tr>
+        <tr>
+            <td>Клиент-пекарь</td>
+            <td><a href="/target">Назначить</a></td>
+        </tr>
+        <tr>
+            <td>Админ</td>
+            <td><a href="/registration/admin">Зарегистрировать</a></td>
+        </tr>
+        <tr>
+            <td>Выход</td>
+            <td><form th:action="@{/logout}" method="post">
+                <p><input type="submit" value="Выход"/></p>
+            </form></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
