@@ -1,5 +1,6 @@
 # Bakery
 MIPT Java client-service project
+![Welcome](https://c.neh.tw/thumb/f/720/95fcb617f15c43b9be0d.jpg)
 ## About project
 This is an app which is supposed to help clients searching for a great baker and bakers waiting for an order tofind each other
 ## Base functional
