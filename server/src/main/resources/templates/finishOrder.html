@@ -33,7 +33,7 @@
                     <br>
                     <br>
                     <br>
-                    <h1 class="text-center">Ваш заказ успешно оформлен</h1>
+                    <h1 class="text-center">Ваш заказ будет завершен</h1>
                     <br>
                     <br>
                     <br>
@@ -41,10 +41,18 @@
                     <br>
                     <br>
                 </div>
+
                 </form>
         <!--        <button type="button" type="submit" class="btn btn-success">Подтвердить</button>-->
-
+                <form  action="#" th:action="@{/finish_order}" method="post">
+                    <div class="form-buttons">
+                        <p class="text-center"><button class="button" type="submit" value="Submit">Подтвердить</button></p>
+                    </div>
+                </form>
+                <div class="form-buttons">
                     <p class="text-center"><a class="btn btn-light" href="/mainPage" role="button" >Назад</a></p>
+                </div>
+
             </div>
         </div>
     </main>
