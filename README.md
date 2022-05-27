@@ -22,7 +22,7 @@ Three types of users:
 - list of clients view
 - register new admin
 ## Creators
-[Nastya](https://github.com/dunaya)
+[Nastya](https://github.com/dunaya),
 [Eva](https://github.com/ezheviica)
 ## How to start the app
 1. install docker-compose [for example, here](https://docs.docker.com/compose/install/)
