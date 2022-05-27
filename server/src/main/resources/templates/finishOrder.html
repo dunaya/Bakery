@@ -1,22 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Обязательные метатеги -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <title>Title</title>
 </head>
 <body>
-<main>
-    <div>
-        <form  action="#" th:action="@{/finish_order}" method="post">
-        <div class="form-buttons">
-            <button class="button" type="submit" value="Submit">Submit</button>
+<div class="p-3 mb-2 bg-success text-white">
+    <main>
+        <div>
+
+            <div class="container-sm">
+                <form  action="#" th:action="@{/finish_order}" method="post">
+                <div class="form-buttons">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1 class="text-center">Ваш заказ будет завершен</h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+                </form>
+        <!--        <button type="button" type="submit" class="btn btn-success">Подтвердить</button>-->
+                <form  action="#" th:action="@{/finish_order}" method="post">
+                    <div class="form-buttons">
+                        <p class="text-center"><button class="button" type="submit" value="Submit">Подтвердить</button></p>
+                    </div>
+                </form>
+                <div class="form-buttons">
+                    <p class="text-center"><a class="btn btn-light" href="/mainPage" role="button" >Назад</a></p>
+                </div>
+
+            </div>
         </div>
-        </form>
-        <div class="form-buttons">
-            <a href="/mainPage" class="button button-google">Назад</a>
-        </div>
-    </div>
-</main>
+    </main>
+</div>
 </body>
 
 </html>

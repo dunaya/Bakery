@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Обязательные метатеги -->
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
   <title>Title</title>
   <style>
     *{
@@ -166,66 +172,56 @@
 </head>
 <body>
 <div id="block-body">
-  <header>
-    <div class="logo">
-      <a href="/home">
-        <span class="use">Пекарня</span>
-      </a>
+  <nav class="navbar navbar-light" style="background-color: #7b68ee;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/mainPage"><div class="p-3 mb-2 bg-warning text-black"><p class="h1">Пекарня Главная</p> </div></a>
+      <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Новости</p></button></a>
+      <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Адреса</p></button></a>
+      <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Основатели</p></button></a>
+      <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Обратная связь</p></button></a>
     </div>
-    <div class="buttons">
-      <div i="header" class="container">
-        <div style="position:absolute; right: 20px; top: 30px">
-      <a href="/mainPage" class="button button-google">Хочу найти пекаря</a>
-        </div>
-      </div>
-    </div>
-        <div class="top-menu">
-      <ul>
-        <li><a href="#">Новости</a></li>
-        <li><a href="#">Адреса</a></li>
-        <li><a href="#">Основатели</a></li>
-        <li><a href="#">Обратная связь</a></li>
-      </ul>
-        </div>
-  </header>
-  <table>
-    <colgroup>
-      <col span="1" style="background:#E6E6FA">
-      <col style="background-color:#E6E6FA">
-    </colgroup>
-    <tr>
-      <th> Параметры</th>
-      <th>Личные данные</th>
-    </tr>
-    <tr>
-      <td>Имя</td>
-      <td><p th:text="${name}"></p></td>
-    </tr>
-    <tr>
-      <td>Фамилия</td>
-      <td><p th:text="${surname}"></p></td>
-    </tr>
-    <tr>
-      <td>Логин</td>
-      <td><p th:text="${login}"></p></td>
-    </tr>
-    <tr>
-      <td>Почта</td>
-      <td><p th:text="${email}"></p></td>
-    </tr>
-    <tr>
-    <tr>
-      <td>Пекарь</td>
-      <td><p th:text="${baker}"></p></td>
-    </tr>
-    <tr>
-      <td>Выход</td>
-      <td><form th:action="@{/logout}" method="post">
-        <p><input type="submit" value="Выход"/></p>
-      </form></td>
-    </tr>
-  </table>
-  <a href="finish_order" class="button button-google">Finish order</a>
+  </nav>
+  <br>
+  <br>
+  <div class="container-sm">
+    <table class="table table-hover">
+      <!--        <colgroup>-->
+      <!--            <col span="1" style="background:#E6E6FA">-->
+      <!--            <col style="background-color:#E6E6FA">-->
+      <!--        </colgroup>-->
+      <tr>
+        <th class="table-light"><p class="text-center">Параметры</p></th>
+        <th class="table-light"><p class="text-center">Личный данные</p></th>
+      </tr>
+      <tr>
+        <td class="table-light">Имя</td>
+        <td class="table-light"><p th:text="${name}"></p></td>
+      </tr>
+      <tr>
+        <td class="table-light">Фамилия</td>
+        <td class="table-light"><p th:text="${surname}"></p></td>
+      </tr>
+      <tr>
+        <td class="table-light">Логин</td>
+        <td class="table-light"><p th:text="${login}"></p></td>
+      </tr>
+      <tr>
+        <td class="table-light">Почта</td>
+        <td class="table-light"><p th:text="${email}"></p></td>
+      </tr>
+      <tr>
+        <td class="table-light">Пекарь</td>
+        <td class="table-light"><p th:text="${baker}"></p></td>
+      </tr>
+      <tr>
+        <td class="table-light">Выход</td>
+        <td class="table-light"><form th:action="@{/logout}" method="post">
+          <button class="btn btn-danger" type="submit">Выход</button>
+        </form></td>
+      </tr>
+    </table>
+    <a class="btn btn-success" href="finish_order" role="button">Завершить заказ</a>
+  </div>
 </div>
 </body>
 </html>

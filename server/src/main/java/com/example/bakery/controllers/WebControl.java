@@ -229,13 +229,6 @@ public class WebControl {
         return "myClient";
     }
 
-    @GetMapping("/free_client")
-    public String freeClient(@RequestParam(name = "name",required = false,defaultValue = "300") String name, Model model) {
-        Authentication auth1 = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("client", clientRepository.findFreeClient());
-        return "freeClient";
-    }
-
     @GetMapping("/spec_cakes")
     public String cakesSpec(@RequestParam(name = "specialisation",required = false,defaultValue = "300") String specialisation, Model model) {
         model.addAttribute("baker_cake", bakerRepository.findSpecCakes());

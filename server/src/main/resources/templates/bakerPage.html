@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Обязательные метатеги -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <title>Title</title>
     <style>
         *{
@@ -141,59 +147,53 @@
 </head>
 <body>
 <div id="block-body">
-    <header>
-        <div class="logo">
-            <a href="/home">
-                <span class="use">Пекарня</span>&nbsp<span class="web">Главная</span>
-            </a>
-            <p>Ваше продвижение в наших силах!</p>
+    <nav class="navbar navbar-light" style="background-color: #7b68ee;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home"><div class="p-3 mb-2 bg-warning text-black"><p class="h1">Пекарня Главная</p> </div></a>
+            <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Новости</p></button></a>
+            <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Адреса</p></button></a>
+            <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Основатели</p></button></a>
+            <a class="navbar-brand" href="/home"><button type="button" class="btn btn-outline-light"><p class="h2">Обратная связь</p></button></a>
         </div>
-        <div class="top-menu">
-            <ul>
-                <li><a href="#">Новости</a></li>
-                <li><a href="#">Адреса</a></li>
-                <li><a href="#">Основатели</a></li>
-                <li><a href="#">Обратная связь</a></li>
-            </ul>
-        </div>
-    </header>
-    <table>
-        <colgroup>
-            <col span="1" style="background:#E6E6FA">
-            <col style="background-color:#E6E6FA">
-        </colgroup>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table table-hover">
+        <!--        <colgroup>-->
+        <!--            <col span="1" style="background:#E6E6FA">-->
+        <!--            <col style="background-color:#E6E6FA">-->
+        <!--        </colgroup>-->
         <tr>
-            <th> Параметры</th>
-            <th>Личные данные</th>
+            <th class="table-light"><p class="text-center">Параметры</p></th>
+            <th class="table-light"><p class="text-center">Личный данные</p></th>
         </tr>
         <tr>
-            <td>ИМЯ</td>
-            <td><p th:text="${name}"></p></td>
+            <td class="table-light">Имя</td>
+            <td class="table-light"><p th:text="${name}"></p></td>
         </tr>
         <tr>
-            <td>ФАМИЛИЯ</td>
-            <td><p th:text="${surname}"></p></td>
+            <td class="table-light">Фамилия</td>
+            <td class="table-light"><p th:text="${surname}"></p></td>
         </tr>
         <tr>
-            <td>ЛОГИН</td>
-            <td><p th:text="${login}"></p></td>
+            <td class="table-light">Логин</td>
+            <td class="table-light"><p th:text="${login}"></p></td>
         </tr>
         <tr>
-            <td>Специализация</td>
-            <td><p th:text="${specialisation}"></p></td>
+            <td class="table-light">Специализация</td>
+            <td class="table-light"><p th:text="${specialisation}"></p></td>
         </tr>
         <tr>
-            <td>Мои клиенты</td>
-            <td><a href="/my_client">ПОСМОТРЕТЬ</a></td>
+            <td class="table-light">Пекарь</td>
+            <td class="table-light"><p th:text="${client}"></p></td>
         </tr>
         <tr>
-            <td>Свободные клиенты</td>
-            <td><a href="/free_client">ПОСМОТРЕТЬ</a></td>
-        </tr>
-        <tr>
-            <td>ВЫХОД</td>
-            <td><form th:action="@{/logout}" method="post">
-                <p><input type="submit" value="Выход"/></p>
+            <td class="table-light">Мой клиент</td>
+            <td class="table-light"><form th:action="@{/logout}" method="post">
+                <button class="btn btn-danger" type="submit">Выход</button>
             </form></td>
         </tr>
     </table>

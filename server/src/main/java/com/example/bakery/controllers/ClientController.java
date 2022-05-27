@@ -22,11 +22,13 @@ public class ClientController {
     public ResponseEntity<List<Client>> getClient() {
         return ResponseEntity.ok(clientRepository.findAll());
     }
+
     @GetMapping("/clients/{id}")
     @ApiOperation("get client by id")
     public ResponseEntity<Client> getClientById(@PathVariable("id") Long id) {
         return clientRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
     @GetMapping("/client_by_login/{login}")
     public Client find_client(@PathVariable("login") String login) {
         System.out.println(login);
