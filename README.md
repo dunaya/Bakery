@@ -22,8 +22,8 @@ Three types of users:
 - list of clients view
 - register new admin
 ## Creators
-@dunaya
-@ezheviica
+[Nastya](https://github.com/dunaya)
+[Eva](https://github.com/ezheviica)
 ## How to start the app
 1. install docker-compose [for example, here](https://docs.docker.com/compose/install/)
 2. copy a docker.yml file in a directory on your computer and start it (docker-compose up --build -d)
